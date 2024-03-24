@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class MyListTile extends StatelessWidget {
+  final String id;
   final String title;
   final String subtitle;
   final String imageUrl;
@@ -9,12 +10,22 @@ class MyListTile extends StatelessWidget {
 
   const MyListTile({
     super.key,
+    required this.id,
     required this.title,
     required this.subtitle,
     required this.imageUrl,
     this.selected = false,
     this.onTap,
   });
+
+  factory MyListTile.fromJson(Map<String, dynamic> json) {
+    return MyListTile(
+      id: json['id'],
+      title: json['title'],
+      subtitle: json['subtitle'],
+      imageUrl: json['imageUrl'],
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
